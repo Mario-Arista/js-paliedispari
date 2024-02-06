@@ -49,7 +49,7 @@ buttonElement.addEventListener("click",
 const PalButtonElement = document.getElementById("button-palindromo");
 
 // Mi salvo output
-const PalOutputElement = document.getElementById("results-pari-palindroma");
+const PalOutputElement = document.getElementById("results-palindroma");
 
 // dichiaro l'array
 let arrayWithLetters;
@@ -58,23 +58,54 @@ function checkParola (parolapal) {
     // dico che è un array vuoto
     arrayWithLetters = [];
 
+    // mi creo un array sosia
+    arraySosia = [];
+
+    let corrispondenza = true;
+
     // per riempire l'array con le lettere di una parola
     for (let i = 0; i < parolapal.lenght; i++) {
         arrayWithLetters.push(parolapal[i])
     }
 
+    // stessa cosa per Array sosia
+    for (let i = parolapal.lenght; i >= 0 ; i--) {
+        arraySosia.push(parolapal[i])
+    }
+
+    // Corrispondenza due Array 
+    for ( let i = 0; i < arrayWithLetters.length; i++) {
+        if (arrayWithLetters[i] !== arraySosia[i]) {
+            corrispondenza = false;
+        }
+    }
+
+    return corrispondenza;
 }
 
 
 // Evento al click
 
-buttonElement.addEventListener("click", 
+PalButtonElement.addEventListener("click", 
     function() {
 
         // Input Utente
-        const parolaUtente = (document.getElementById("parola-palindroma").value);
+         const parolaUtente = document.getElementById("parola-palindroma").value;
 
+        // verifico se parola utente è palindroma
+        if (checkParola(parolaUtente)) {
+            
+            const newElement = document.createElement("div");
+            PalOutputElement.append(newElement);
+            newElement.innerHTML = `${parolaUtente} è una parola palindroma`;
+
+        } else {
+
+            const newElement = document.createElement("div");
+            PalOutputElement.append(newElement);
+            newElement.innerHTML = `${parolaUtente} non è una parola palindroma`;
+            
+        }
         
-
     }
 );
