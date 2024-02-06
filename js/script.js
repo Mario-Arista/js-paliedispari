@@ -1,6 +1,9 @@
 // Mi salvo Button
 const buttonElement = document.getElementById("button-pd");
 
+// Mi salvo output
+const outputElement = document.getElementById("results-pari-dispari");
+
 // Genero Numero Random Computer con function
 
 function computerButtaNumero() {
@@ -27,9 +30,13 @@ buttonElement.addEventListener("click",
         const somma = numeroRandom + sceltaNumeroUtente;
 
         if ((sceltaPariDispariUtente === "pari" && somma % 2 == 0 ) || (sceltaPariDispariUtente === "dispari" && somma % 2 != 0))   {
-            console.log("Hai vinto");
+            const newElement = document.createElement("div");
+            outputElement.append(newElement);
+            newElement.innerHTML = `Hai Vinto!<br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
         } else {
-            console.log("Hai perso");
+            const newElement = document.createElement("div");
+            outputElement.append(newElement);
+            newElement.innerHTML = `<strong>Hai Perso!</strong> <br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
         }
     }
 );
