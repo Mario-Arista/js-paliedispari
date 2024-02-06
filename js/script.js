@@ -1,3 +1,5 @@
+// PARI E DISPARI
+
 // Mi salvo Button
 const buttonElement = document.getElementById("button-pd");
 
@@ -41,3 +43,38 @@ buttonElement.addEventListener("click",
     }
 );
 
+// PAROLA PALINDROMA 
+
+// Mi salvo Button
+const PalButtonElement = document.getElementById("button-palindromo");
+
+// Mi salvo output
+const PalOutputElement = document.getElementById("results-pari-palindroma");
+
+// dichiaro l'array
+let arrayWithLetters;
+
+function checkParola (parolapal) {
+    // dico che è un array vuoto
+    arrayWithLetters = [];
+
+    // per riempire l'array con le lettere di una parola
+    for (let i = 0; i < parolapal.lenght; i++) {
+        arrayWithLetters.push(parolapal[i])
+    }
+
+}
+
+
+// Evento al click
+
+buttonElement.addEventListener("click", 
+    function() {
+
+        // Input Utente
+        const parolaUtente = (document.getElementById("parola-palindroma").value);
+
+        
+
+    }
+);
