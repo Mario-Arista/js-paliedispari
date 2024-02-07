@@ -64,17 +64,17 @@ function checkParola (parolapal) {
     let corrispondenza = true;
 
     // per riempire l'array con le lettere di una parola
-    for (let i = 0; i < parolapal.lenght; i++) {
+    for (let i = 0; i < parolapal.length; i++) {
         arrayWithLetters.push(parolapal[i])
     }
 
     // stessa cosa per Array sosia
-    for (let i = parolapal.lenght; i >= 0 ; i--) {
+    for (let i = parolapal.length - 1; i >= 0 ; i--) {
         arraySosia.push(parolapal[i])
     }
 
     // Corrispondenza due Array 
-    for ( let i = 0; i < arrayWithLetters.length; i++) {
+    for ( let i = 0; i < arraySosia.length; i++) {
         if (arrayWithLetters[i] !== arraySosia[i]) {
             corrispondenza = false;
         }
