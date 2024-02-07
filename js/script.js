@@ -32,10 +32,15 @@ buttonElement.addEventListener("click",
         const somma = numeroRandom + sceltaNumeroUtente;
 
         if ((sceltaPariDispariUtente === "pari" && somma % 2 == 0 ) || (sceltaPariDispariUtente === "dispari" && somma % 2 != 0))   {
+            const hiddenElelement = document.querySelector(".father-output div");
+            hiddenElelement.classList.remove("d-none");
             const newElement = document.createElement("div");
             outputElement.append(newElement);
             newElement.innerHTML = `Hai Vinto!<br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
         } else {
+            const hiddenElelement = document.querySelector(".father-output div");
+            hiddenElelement.classList.remove("d-none");
+
             const newElement = document.createElement("div");
             outputElement.append(newElement);
             newElement.innerHTML = `<strong>Hai Perso!</strong> <br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
@@ -61,8 +66,6 @@ function checkParola (parolapal) {
     // mi creo un array sosia
     arraySosia = [];
 
-    let corrispondenza = true;
-
     // per riempire l'array con le lettere di una parola
     for (let i = 0; i < parolapal.length; i++) {
         arrayWithLetters.push(parolapal[i])
@@ -76,11 +79,11 @@ function checkParola (parolapal) {
     // Corrispondenza due Array 
     for ( let i = 0; i < arraySosia.length; i++) {
         if (arrayWithLetters[i] !== arraySosia[i]) {
-            corrispondenza = false;
+            return false;
         }
     }
 
-    return corrispondenza;
+    return true;
 }
 
 
@@ -94,12 +97,16 @@ PalButtonElement.addEventListener("click",
 
         // verifico se parola utente è palindroma
         if (checkParola(parolaUtente)) {
+            const hiddenElelement = document.querySelector("#results-palindroma");
+            hiddenElelement.classList.remove("d-none");
             
             const newElement = document.createElement("div");
             PalOutputElement.append(newElement);
             newElement.innerHTML = `${parolaUtente} è una parola palindroma`;
 
         } else {
+            const hiddenElelement = document.querySelector("#results-palindroma");
+            hiddenElelement.classList.remove("d-none");
 
             const newElement = document.createElement("div");
             PalOutputElement.append(newElement);
