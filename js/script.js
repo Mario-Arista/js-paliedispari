@@ -22,30 +22,56 @@ buttonElement.addEventListener("click",
     function() {
 
         // Input Utente
-        const sceltaPariDispariUtente = (document.getElementById("scelta-utente-pd").value);
+        const sceltaPariDispariUtente = document.getElementById("scelta-utente-pd").value.toLowerCase();
         const sceltaNumeroUtente = Number(document.getElementById("numero-utente-pd").value);
 
         // NUMERO RANDOM COMPUTER
         const numeroRandom = computerButtaNumero();
 
-        // faccio somma dei 2 numeri
-        const somma = numeroRandom + sceltaNumeroUtente;
-
-        if ((sceltaPariDispariUtente === "pari" && somma % 2 == 0 ) || (sceltaPariDispariUtente === "dispari" && somma % 2 != 0))   {
-            const hiddenElelement = document.querySelector(".father-output div");
-            hiddenElelement.classList.remove("d-none");
-            const newElement = document.createElement("div");
-            outputElement.append(newElement);
-            newElement.innerHTML = `Hai Vinto!<br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
+        // Controllo se inserisce la parola corretta
+        if(sceltaPariDispariUtente != "pari" && sceltaPariDispariUtente != "dispari") {
+            
+    
+            alert('Hai inserito un valore sbagliato nella scelta, inserisci o "pari" o "dispari"')
+    
         } else {
-            const hiddenElelement = document.querySelector(".father-output div");
-            hiddenElelement.classList.remove("d-none");
 
-            const newElement = document.createElement("div");
-            outputElement.append(newElement);
-            newElement.innerHTML = `<strong>Hai Perso!</strong> <br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
+            // controllo il numero
+            if (isNaN(sceltaNumeroUtente) || sceltaNumeroUtente < 1 || sceltaNumeroUtente > 5) {
+
+                alert("Numero sbagliato, inserisci un valore tra 1 e 5");
+
+            } else {
+
+                // faccio somma dei 2 numeri
+                const somma = numeroRandom + sceltaNumeroUtente;
+
+                if ((sceltaPariDispariUtente === "pari" && somma % 2 == 0 ) || (sceltaPariDispariUtente === "dispari" && somma % 2 != 0))   {
+
+                    const hiddenElelement = document.querySelector(".father-output div");
+                    hiddenElelement.classList.remove("d-none");
+                    const newElement = document.createElement("div");
+                    outputElement.append(newElement);
+                    newElement.innerHTML = `Hai Vinto!<br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
+
+                } else {
+
+                    const hiddenElelement = document.querySelector(".father-output div");
+                    hiddenElelement.classList.remove("d-none");
+
+                    const newElement = document.createElement("div");
+                    outputElement.append(newElement);
+                    newElement.innerHTML = `<strong>Hai Perso!</strong> <br> Tu hai scelto ${sceltaPariDispariUtente} e hai buttato ${sceltaNumeroUtente} <br> il Computer ha buttato ${numeroRandom}`;
+
+                }
+            }
+
         }
+
+            
     }
+
+
 );
 
 // PAROLA PALINDROMA 
