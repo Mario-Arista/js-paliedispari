@@ -14,6 +14,17 @@ function computerButtaNumero() {
     return numeroComputer;
 }
 
+function sePariDispari(number) {
+    // restituirà una stringa, o "pari" o "dispari"
+
+    if(number % 2 == 0) {
+        // pari
+        return "pari";
+    } else {
+        return "dispari";
+    }
+}
+
 console.log(computerButtaNumero());
 
 // Evento al click
@@ -46,7 +57,10 @@ buttonElement.addEventListener("click",
                 // faccio somma dei 2 numeri
                 const somma = numeroRandom + sceltaNumeroUtente;
 
-                if ((sceltaPariDispariUtente === "pari" && somma % 2 == 0 ) || (sceltaPariDispariUtente === "dispari" && somma % 2 != 0))   {
+                // Controllo se la somma è pari o dispari
+                const outcome = sePariDispari(somma);
+
+                if (sceltaPariDispariUtente === outcome)  {
 
                     const hiddenElelement = document.querySelector(".father-output div");
                     hiddenElelement.classList.remove("d-none");
